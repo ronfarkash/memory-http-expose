@@ -9,7 +9,7 @@ namespace MemHTTPExpose.ExposedProc
 {
     public class ExposedProcess : MemoryHandler
     {
-        // git pull example
+        // git pull example, conflict
         private static ExposedProcess _instance = null;
         private static object _mutex = new();
 
