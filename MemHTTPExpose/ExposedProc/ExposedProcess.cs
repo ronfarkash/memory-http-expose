@@ -12,7 +12,7 @@ namespace MemHTTPExpose.ExposedProc
         private static ExposedProcess _instance = null;
         private static object _mutex = new();
 
-        public static ExposedProcess Get(int procId)
+        public static ExposedProcess Init(int procId)
         {
             if(_instance == null)
             {
@@ -26,7 +26,7 @@ namespace MemHTTPExpose.ExposedProc
             }
             return _instance;
         }
-        public static ExposedProcess Get(string procName)
+        public static ExposedProcess Init(string procName)
         {
             if (_instance == null)
             {
@@ -37,6 +37,15 @@ namespace MemHTTPExpose.ExposedProc
                         _instance = new(procName);
                     }
                 }
+            }
+            return _instance;
+        }
+
+        public ExposedProcess Get()
+        {
+            if(_instance == null)
+            {
+                throw new Exception("Process was not initialized.");
             }
             return _instance;
         }
